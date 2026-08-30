@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura - 21-Day Gratitude Journal</title>
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-neutral">
+  
+  <!-- Shifting Background Glows -->
+  <div class="glow-container">
+    <div class="glow-orb orb-primary"></div>
+    <div class="glow-orb orb-secondary"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
+        <span class="logo-text">AURA</span>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-target="journey-view" id="nav-journey-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+          <span>Journey</span>
+        </button>
+        <button class="nav-btn" data-target="journal-view" id="nav-journal-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Write Journal</span>
+        </button>
+        <button class="nav-btn" data-target="manifestation-view" id="nav-manifestation-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Manifest</span>
+        </button>
+        <button class="nav-btn" data-target="meditation-view" id="nav-meditation-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          <span>Meditate</span>
+        </button>
+        <button class="nav-btn" data-target="history-view" id="nav-history-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>History</span>
+        </button>
+        <button class="nav-btn" data-target="insights-view" id="nav-insights-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>Insights</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="settings-btn" id="open-settings-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Settings</span>
+        </button>
+        <button class="dev-panel-toggle" id="open-dev-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <span>Simulation Tools</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="header-left">
+          <span class="system-date" id="display-date">Wednesday, June 24, 2026</span>
+        </div>
+        <div class="header-right">
+          <!-- Streak Indicator -->
+          <div class="streak-badge" id="streak-container">
+            <span class="streak-icon">🔥</span>
+            <span class="streak-count" id="streak-value">0</span>
+            <span class="streak-label">days</span>
+          </div>
+          <!-- Current Day progress tracker -->
+          <div class="progress-badge" id="journey-badge-container">
+            <span class="badge-text" id="journey-badge-text">Day 1 of 21</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- In-app Reminder Alert Banner -->
+      <div class="reminder-banner hidden" id="reminder-banner">
+        <div class="reminder-content">
+          <span class="bell-icon">🔔</span>
+          <span class="reminder-text">Hourly reminder: Take a moment to write down your 10 gratitudes today.</span>
+        </div>
+        <button class="close-banner-btn" id="close-reminder-btn">&times;</button>
+      </div>
+
+      <!-- VIEW: Journey Map (Dashboard) -->
+      <section class="app-view active" id="journey-view">
+        <div class="view-header">
+          <h1>Your 21-Day Journey</h1>
+          <p class="subtitle">Start on any weekday (Monday–Friday). Complete one entry each weekday to finish the practice. Missing a weekday resets your progress.</p>
+        </div>
+
+        <!-- Weekend Banner if active day is weekend -->
+        <div class="weekend-pause-card hidden" id="weekend-pause-banner">
+          <div class="pause-icon">☀️</div>
+          <h3>Weekend Pause</h3>
+          <p id="weekend-pause-message">It is currently the weekend. Aura is paused so you can rest and be present. Your 21-day practice will resume on Monday.</p>
+        </div>
+
+        <!-- Weekday Quote Banner (shows on weekdays instead of Weekend Pause) -->
+        <div class="weekday-quote-card hidden" id="weekday-quote-banner">
+          <span class="quote-sparkle">✨</span>
+          <p class="weekday-quote-text" id="weekday-quote-text">"Gratitude is the bridge between you and the Beloved."</p>
+          <cite class="weekday-quote-author" id="weekday-quote-author">— Rumi</cite>
+        </div>
+
+        <!-- Journey Pagination Controls -->
+        <div class="journey-pagination-bar" id="journey-pagination-bar">
+          <button class="tiny-btn pagination-arrow-btn" id="journey-prev-page-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Previous Cycle</span>
+          </button>
+          <span class="journey-page-title" id="journey-page-title">Days 1 - 21</span>
+          <button class="tiny-btn pagination-arrow-btn" id="journey-next-page-btn">
+            <span>Next Cycle</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Journey Grid -->
+        <div class="journey-grid" id="journey-grid-container">
+          <!-- Day cards injected programmatically -->
+        </div>
+
+        <!-- Call to Action for Active Day -->
+        <div class="active-day-action-card" id="active-day-cta">
+          <div class="cta-info">
+            <span class="cta-tag" id="cta-day-tag">Day 1 Focus</span>
+            <h3 id="cta-theme-title">Physical Health & Energy</h3>
+            <p id="cta-prompt-desc">Reflect on the strength, senses, and vitality of your physical body today.</p>
+          </div>
+          <button class="cta-btn primary-btn" id="start-journal-btn">
+            <span>Journal Today</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- VIEW: Write Journal -->
+      <section class="app-view" id="journal-view">
+        <div class="view-header flex-header">
+          <div>
+            <span class="focus-indicator-badge" id="journal-focus-badge">Focus: Health</span>
+            <h1 id="journal-day-title">Day 1 Journal</h1>
+          </div>
+          <button class="text-btn back-to-journey-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <span>Back to Journey</span>
+          </button>
+        </div>
+
+        <!-- Motivational Quote Panel -->
+        <blockquote class="quote-card">
+          <p class="quote-text" id="journal-quote">"It is health that is real wealth and not pieces of gold and silver."</p>
+          <cite class="quote-author" id="journal-quote-author">— Mahatma Gandhi</cite>
+        </blockquote>
+
+        <!-- Reflection Prompt Description -->
+        <div class="prompt-box">
+          <span class="prompt-icon">💡</span>
+          <p id="journal-prompt-text">Focus Prompt: What part of your body, health, or sensory experiences are you most grateful for today?</p>
+        </div>
+
+        <!-- Journal Entry Workspace -->
+        <div class="journal-workspace">
+          <div class="workspace-header">
+            <h3>I am grateful for...</h3>
+            <div class="counter-display">
+              <span id="completed-inputs-count">0</span>/10 entries filled
+              <div class="progress-track">
+                <div class="progress-bar-fill" id="journal-progress-bar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- List of 10 Input Rows -->
+          <form class="gratitude-form" id="gratitude-form" onsubmit="event.preventDefault();">
+            <div class="inputs-grid" id="inputs-container">
+              <!-- 10 inputs dynamically generated -->
+            </div>
+
+            <div class="form-actions">
+              <button class="primary-btn submit-btn" id="save-journal-btn" disabled>
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Save Gratitude & Complete Day</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- VIEW: History -->
+      <section class="app-view" id="history-view">
+        <div class="view-header">
+          <h1>Journal History</h1>
+          <p class="subtitle">Look back on your moments of reflection and gratitude.</p>
+        </div>
+
+        <div class="history-controls">
+          <div class="search-bar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="history-search" placeholder="Search your past entries...">
+          </div>
+          <div class="filter-dropdown">
+            <select id="history-filter-category">
+              <option value="all">All Categories</option>
+              <option value="Health">Health</option>
+              <option value="Career">Career</option>
+              <option value="Family">Family</option>
+              <option value="Job">Job</option>
+              <option value="Money">Money</option>
+              <option value="Love">Love</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="history-list" id="history-list-container">
+          <!-- History items will be dynamically rendered here -->
+        </div>
+      </section>
+
+      <!-- VIEW: Insights -->
+      <section class="app-view" id="insights-view">
+        <div class="view-header">
+          <h1>Personal Insights</h1>
+          <p class="subtitle">Visualize your gratitude distribution across key areas of your life.</p>
+        </div>
+
+        <div class="insights-grid">
+          <!-- Stats Panel -->
+          <div class="insight-card stats-card">
+            <h3>Overview</h3>
+            <div class="stats-row">
+              <div class="stat-item">
+                <span class="stat-num" id="insights-completed-days">0</span>
+                <span class="stat-label">Days Completed</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num" id="insights-current-streak">0</span>
+                <span class="stat-label">Current Streak</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num" id="insights-longest-streak">0</span>
+                <span class="stat-label">Longest Streak</span>
+              </div>
+            </div>
+            <div class="stats-row" style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;">
+              <div class="stat-item full-width">
+                <span class="stat-num" id="insights-total-items">0</span>
+                <span class="stat-label">Total Gratitudes Recorded</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart Panel -->
+          <div class="insight-card chart-card">
+            <h3>Focus Distribution</h3>
+            <p class="chart-subtitle">Grateful responses by category</p>
+            <div class="chart-container">
+              <!-- SVG Donut Chart -->
+              <div class="chart-wrapper">
+                <svg viewBox="0 0 200 200" width="100%" height="100%" class="donut-svg" id="insights-donut-chart">
+                  <circle cx="100" cy="100" r="70" class="donut-bg"></circle>
+                  <g id="donut-segments"></g>
+                  <circle cx="100" cy="100" r="50" class="donut-center"></circle>
+                  <text x="100" y="95" text-anchor="middle" class="chart-center-val" id="chart-center-num">0%</text>
+                  <text x="100" y="115" text-anchor="middle" class="chart-center-lbl">Logged</text>
+                </svg>
+              </div>
+              <!-- Chart Legend -->
+              <div class="chart-legend" id="chart-legend-container">
+                <!-- Legend items will be injected here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aura Reflection & Manifestation Insights -->
+        <div class="insights-grid-row" id="insights-expanded-row" style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; margin-top: 24px;">
+          
+          <!-- Personal Aura Color Orb Card -->
+          <div class="insight-card aura-orb-card text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; position: relative; overflow: hidden; min-height: 330px;">
+            <h3>Your Personal Aura</h3>
+            <p class="chart-subtitle" style="margin-bottom: 24px;">Based on your gratitude journal vibrations</p>
+            
+            <!-- Glowing interactive Aura Orb -->
+            <div class="aura-orb-container" style="position: relative; width: 140px; height: 140px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+              <div class="aura-orb-glow" id="aura-orb-glow"></div>
+              <div class="aura-orb-core" id="aura-orb-core">✨</div>
+            </div>
+            
+            <h4 class="aura-color-title" id="aura-color-title" style="font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">Neutral Aura</h4>
+            <p class="aura-description-text" id="aura-description-text" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; text-align: center; max-width: 320px;">
+              Write your first gratitude entry to awaken your Aura colors.
+            </p>
+          </div>
+
+          <!-- Manifestation Areas Suggestions Card -->
+          <div class="insight-card manifestation-suggestion-card" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 330px;">
+            <div>
+              <h3>Areas for Manifestation</h3>
+              <p class="chart-subtitle" style="margin-bottom: 16px;">Vibrational alignment recommendations</p>
+              
+              <div class="manifest-suggestions-list" id="manifest-suggestions-list" style="display: flex; flex-direction: column; gap: 10px;">
+                <!-- Will be dynamically populated -->
+              </div>
+            </div>
+            
+            <div class="manifestation-active-topics" style="margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px;">
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--theme-primary); display: block; margin-bottom: 6px;">Your Manifestation Vortices</span>
+              <div id="manifest-vortices-chips" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <!-- Dynamic keyword chips -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manifestation Tracker Card -->
+        <div class="insight-card full-card" style="margin-top: 24px;" id="manifestation-tracker-card">
+          <h3>Manifestation Tracker</h3>
+          <p class="chart-subtitle" style="margin-bottom: 16px;">Realization rate and timing analysis</p>
+          <div class="manifestation-tracker-stats" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px;">
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:16px; border-radius: var(--border-radius-md); text-align:center;">
+              <span style="display:block; font-size:1.8rem; font-weight:700; color:#fbbf24;" id="tracker-manifest-total">0</span>
+              <span style="font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Desires Committed</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:16px; border-radius: var(--border-radius-md); text-align:center;">
+              <span style="display:block; font-size:1.8rem; font-weight:700; color:#10b981;" id="tracker-manifest-realized">0</span>
+              <span style="font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Desires Realized</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:16px; border-radius: var(--border-radius-md); text-align:center;">
+              <span style="display:block; font-size:1.8rem; font-weight:700; color:#a855f7;" id="tracker-manifest-rate">0%</span>
+              <span style="font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Realization Rate</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); padding:16px; border-radius: var(--border-radius-md); text-align:center;">
+              <span style="display:block; font-size:1.8rem; font-weight:700; color:#3b82f6;" id="tracker-manifest-days">-</span>
+              <span style="font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px;">Avg Days to Realize</span>
+            </div>
+          </div>
+          
+          <div class="manifested-logs-list" style="margin-top:20px;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--theme-primary); display: block; margin-bottom: 8px;">Manifestation Log of Accomplishments</span>
+            <div id="manifested-accomplishments" style="display:flex; flex-direction:column; gap:8px; max-height:160px; overflow-y:auto; padding-right:4px;">
+              <!-- Accomplishments list -->
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-card full-card" style="margin-top: 24px;">
+          <h3>Aura Reflection Profile Summary</h3>
+          <div class="reflection-profile-text" id="reflection-profile-summary">
+            Start journaling to generate your personalized reflection profile. Write in multiple categories to see your focus dashboard populate.
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Manifestation Journal -->
+      <section class="app-view" id="manifestation-view">
+        <div class="view-header">
+          <h1>Manifestation Journal</h1>
+          <p class="subtitle">Focus your intentions, align your energy, and manifest your desires.</p>
+        </div>
+
+        <div class="manifestation-grid">
+          <!-- Guide Card -->
+          <div class="insight-card guide-card">
+            <h3>How to Manifest Properly</h3>
+            <ul class="manifestation-guide-list" style="list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+              <li><strong>1. Be Specific & Clear:</strong> Focus on exactly what you want to experience. Vague thoughts lead to vague outcomes.</li>
+              <li><strong>2. Present Tense:</strong> Write in the present tense (e.g., "I am so grateful now that...") to signal to your subconscious that it is already yours.</li>
+              <li><strong>3. Feel the Emotion:</strong> Embody the feelings of gratitude, success, and relief as if you already have it. Emotion is the fuel.</li>
+              <li><strong>4. Release & Act:</strong> Detach from *how* or *when* it will arrive. Take inspired daily actions toward your goal.</li>
+            </ul>
+          </div>
+
+          <!-- Daily Input Form -->
+          <div class="journal-workspace manifestation-input-card">
+            <h3>Today's Manifestation Intention</h3>
+            <form id="manifestation-form" onsubmit="event.preventDefault();">
+              <div class="form-group" style="margin-top: 12px; margin-bottom: 12px;">
+                <label for="manifest-entry-date" style="font-weight: 500; font-size: 0.9rem;">Manifestation Entry Date:</label>
+                <input type="date" id="manifest-entry-date" style="width: 100%; margin-top: 6px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 8px 12px; color: #fff; font-family: var(--font-ui); outline: none;">
+              </div>
+              <div class="form-group" style="margin-top: 16px;">
+                <label for="manifest-intend" style="font-weight: 500; font-size: 0.9rem;">1. What are you calling into your life today? (Write in the present tense)</label>
+                <textarea id="manifest-intend" rows="3" placeholder="I am so thrilled and grateful now that I am..." style="width: 100%; margin-top: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-md); padding: 12px; color:#fff; outline:none; resize: none; font-family:var(--font-ui);"></textarea>
+              </div>
+              <div class="form-group" style="margin-top: 16px;">
+                <label for="manifest-feel" style="font-weight: 500; font-size: 0.9rem;">2. Describe the feelings of having this in your life. (Feel the relief, joy, abundance)</label>
+                <textarea id="manifest-feel" rows="3" placeholder="I feel completely aligned, peaceful, and excited because..." style="width: 100%; margin-top: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-md); padding: 12px; color:#fff; outline:none; resize: none; font-family:var(--font-ui);"></textarea>
+              </div>
+              <div class="form-group" style="margin-top: 16px;">
+                <label for="manifest-action" style="font-weight: 500; font-size: 0.9rem;">3. What is one inspired action step you will take today?</label>
+                <input type="text" id="manifest-action" placeholder="I will reach out to... / research... / dedicate 1 hour to..." style="width: 100%; margin-top: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-md); padding: 12px; color:#fff; outline:none; font-family:var(--font-ui);">
+              </div>
+              <div class="form-actions" style="margin-top: 20px;">
+                <button class="primary-btn" id="save-manifestation-btn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Commit to Intentions</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Manifestation Archive -->
+        <div class="insight-card full-card" style="margin-top: 24px;">
+          <div class="workspace-header" style="margin-bottom: 20px; border:none; padding-bottom: 0;">
+            <h3>My Manifestation Archive</h3>
+            <div class="search-bar" style="max-width: 300px; padding: 8px 14px; margin-left: auto;">
+              <input type="text" id="manifestation-search" placeholder="Search intentions...">
+            </div>
+          </div>
+          <div class="manifestation-list" id="manifestation-list-container" style="display: flex; flex-direction: column; gap: 16px; margin-top: 12px;">
+            <!-- Manifestation logs dynamically rendered -->
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: Meditation Room -->
+      <section class="app-view" id="meditation-view">
+        <div class="view-header">
+          <h1>Meditation Room</h1>
+          <p class="subtitle">Take a pause from the digital noise. Calm your mind and ground your presence.</p>
+        </div>
+
+        <div class="meditation-grid">
+          <!-- Breathing Timer Card -->
+          <div class="insight-card meditation-timer-card text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px;">
+            <div class="timer-inner" style="width: 100%;">
+              <!-- Circular Countdown & Breathing Ring -->
+              <div class="breathing-circle-wrapper" style="position: relative; width: 220px; height: 220px; margin: 0 auto 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                <div class="breathing-ring" id="breathing-ring"></div>
+                <div style="position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5;">
+                  <span class="breathing-guide-text" id="breathing-guide-text" style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 4px;">Focus</span>
+                  <span class="stopwatch-display" id="meditation-stopwatch" style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 700; color: #fff;">10:00</span>
+                </div>
+              </div>
+
+              <!-- Preset Options -->
+              <div class="timer-presets" id="timer-presets-container" style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
+                <button class="tiny-btn preset-btn" data-time="60">1 Min</button>
+                <button class="tiny-btn preset-btn" data-time="300">5 Min</button>
+                <button class="tiny-btn active preset-btn" data-time="600">10 Min</button>
+                <button class="tiny-btn preset-btn" data-time="900">15 Min</button>
+                <button class="tiny-btn preset-btn" data-time="1200">20 Min</button>
+              </div>
+
+              <div class="timer-controls" style="display: flex; justify-content: center; gap: 12px;">
+                <button class="primary-btn" id="meditation-start-btn" style="width: 150px;">Start Session</button>
+                <button class="secondary-btn" id="meditation-reset-btn" style="display: none;">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guidance & Instructions -->
+          <div class="insight-card guide-card">
+            <h3>Box Breathing Instructions</h3>
+            <p class="guide-intro" style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-top: 10px; margin-bottom: 16px;">
+              Box breathing is a powerful technique used to quickly calm the nervous system and focus the mind. Follow the pulsing circle:
+            </p>
+            <ul class="meditation-steps" style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+              <li id="step-inhale" style="padding: 10px 14px; border-radius: var(--border-radius-md); background: rgba(255,255,255,0.02); border: 1px solid transparent; transition: var(--transition-smooth);"><strong>1. Inhale:</strong> Breathe in slowly for 4 seconds as the circle expands.</li>
+              <li id="step-hold1" style="padding: 10px 14px; border-radius: var(--border-radius-md); background: rgba(255,255,255,0.02); border: 1px solid transparent; transition: var(--transition-smooth);"><strong>2. Hold:</strong> Hold your lungs full of air for 4 seconds.</li>
+              <li id="step-exhale" style="padding: 10px 14px; border-radius: var(--border-radius-md); background: rgba(255,255,255,0.02); border: 1px solid transparent; transition: var(--transition-smooth);"><strong>3. Exhale:</strong> Release your breath for 4 seconds as the circle contracts.</li>
+              <li id="step-hold2" style="padding: 10px 14px; border-radius: var(--border-radius-md); background: rgba(255,255,255,0.02); border: 1px solid transparent; transition: var(--transition-smooth);"><strong>4. Hold:</strong> Hold your lungs empty of air for 4 seconds.</li>
+            </ul>
+            <div class="meditation-tip-box" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);">
+              <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--theme-primary);">Zen Tip of the Day</span>
+              <p id="meditation-daily-tip" style="font-size: 0.95rem; font-style: italic; color: var(--text-secondary); margin-top: 6px; line-height: 1.5;">"Your thoughts are like clouds passing through the sky. Observe them come and go, but remain as the sky."</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Record Manual Session -->
+        <div class="meditation-grid" style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="insight-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <h3>Log Meditation Session</h3>
+            <form id="meditation-manual-form" onsubmit="event.preventDefault();" style="margin-top: 14px; display: flex; flex-direction: column; gap: 14px;">
+              <div class="form-group">
+                <label for="meditation-manual-duration">Duration (Minutes):</label>
+                <input type="number" id="meditation-manual-duration" min="1" max="180" value="10" style="width: 100%; margin-top: 6px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 8px 12px; color: #fff;">
+              </div>
+              <div class="form-group">
+                <label for="meditation-manual-note">Post-session reflections (Optional):</label>
+                <input type="text" id="meditation-manual-note" placeholder="Felt peaceful, mind wandered a bit, grounded..." style="width: 100%; margin-top: 6px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 8px 12px; color: #fff;">
+              </div>
+              <button class="primary-btn" id="save-meditation-manual-btn" style="align-self: flex-end; margin-top: 10px;">Save Meditation Log</button>
+            </form>
+          </div>
+
+          <!-- Meditation History logs -->
+          <div class="insight-card" style="display: flex; flex-direction: column; height: 100%;">
+            <h3>My Meditation Logs</h3>
+            <div class="meditation-history-list" id="meditation-history-list" style="flex-grow: 1; max-height: 210px; overflow-y: auto; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; padding-right: 4px;">
+              <!-- logs injected here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Drawer: Developer Simulation Panel -->
+  <div class="drawer" id="dev-drawer">
+    <div class="drawer-header">
+      <h3>Simulation Tools</h3>
+      <button class="close-drawer-btn" id="close-dev-btn">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <div class="sim-section">
+        <h4>Date & Time Control</h4>
+        <p class="sim-help">Use this to simulate weekday tracking, weekend freezes, and missed days.</p>
+        
+        <div class="form-group">
+          <label for="sim-date-picker">Simulated System Date:</label>
+          <input type="date" id="sim-date-picker">
+        </div>
+
+        <div class="quick-dates">
+          <button class="tiny-btn" id="sim-set-today">Set to Today</button>
+          <button class="tiny-btn" id="sim-add-day">+1 Day</button>
+          <button class="tiny-btn" id="sim-sub-day">-1 Day</button>
+          <button class="tiny-btn" id="sim-jump-weekend">Go to Weekend (Sat)</button>
+        </div>
+      </div>
+
+      <div class="sim-section">
+        <h4>Reminder Simulation</h4>
+        <div class="checkbox-group">
+          <input type="checkbox" id="sim-fast-reminders">
+          <label for="sim-fast-reminders">Accelerate Reminders (Trigger every 10 seconds)</label>
+        </div>
+        <button class="secondary-btn btn-sm" id="sim-trigger-ping" style="margin-top: 8px; width: 100%;">Trigger Reminder Notification Now</button>
+      </div>
+
+      <div class="sim-section">
+        <h4>Data Management</h4>
+        <div class="quick-actions">
+          <button class="secondary-btn btn-sm" id="sim-fill-current">Auto-Fill 10 Entries (Today)</button>
+          <button class="secondary-btn btn-sm" id="sim-unlock-all">Unlock All 21 Days</button>
+          <button class="danger-btn btn-sm" id="sim-reset-data" style="margin-top: 12px; width: 100%;">Reset App Data (Wipe Storage)</button>
+        </div>
+      </div>
+
+      <div class="sim-section info-section">
+        <h4>Current Sim State</h4>
+        <table class="sim-table">
+          <tr>
+            <td>Date:</td>
+            <td id="sim-state-date">-</td>
+          </tr>
+          <tr>
+            <td>Day of Week:</td>
+            <td id="sim-state-weekday">-</td>
+          </tr>
+          <tr>
+            <td>Is Weekend?</td>
+            <td id="sim-state-isweekend">-</td>
+          </tr>
+          <tr>
+            <td>Current Day Num:</td>
+            <td id="sim-state-daynum">-</td>
+          </tr>
+          <tr>
+            <td>Last Entry Date:</td>
+            <td id="sim-state-lastentry">-</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Settings Panel -->
+  <div class="modal" id="settings-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>App Settings</h2>
+        <button class="close-modal-btn" id="close-settings-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-group">
+          <h3>Notifications</h3>
+          <div class="setting-row">
+            <div>
+              <span class="setting-label">Hourly Reminders</span>
+              <p class="setting-desc">Ping me hourly on weekdays until today's 10 entries are saved.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settings-notification-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <div>
+              <span class="setting-label">Notification Audio Chime</span>
+              <p class="setting-desc">Play a soft, calming bell chime when notifications arrive.</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="settings-chime-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-group" style="margin-top: 24px;">
+          <h3>Personalization</h3>
+          <div class="setting-row">
+            <div>
+              <span class="setting-label">Your Name</span>
+              <p class="setting-desc">How Aura addresses you.</p>
+            </div>
+            <input type="text" id="settings-name-input" placeholder="Your Name" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 6px 12px; color: #fff; font-size: 0.85rem; outline: none; width: 150px;">
+          </div>
+          <div class="setting-row" style="margin-top: 12px;">
+            <div>
+              <span class="setting-label">Your Date of Birth</span>
+              <p class="setting-desc">Used for your Major Arcana numerological birth alignment.</p>
+            </div>
+            <input type="date" id="settings-dob-input" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 6px 12px; color: #fff; font-size: 0.85rem; outline: none; cursor: pointer;">
+          </div>
+          <div class="setting-row" style="margin-top: 12px;">
+            <div>
+              <span class="setting-label">Your Email</span>
+              <p class="setting-desc">Your contact email address.</p>
+            </div>
+            <input type="email" id="settings-email-input" placeholder="yourname@example.com" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); padding: 6px 12px; color: #fff; font-size: 0.85rem; outline: none; width: 180px;">
+          </div>
+        </div>
+
+        <div class="settings-group" style="margin-top: 24px;">
+          <h3>App Information</h3>
+          <p class="setting-desc">Aura Gratitude Journal - 21-Day Guided Experience.</p>
+          <p class="setting-desc">Only weekdays (Mon - Fri) are counted. Weekends are skipped automatically. Missing a single weekday resets the active journal back to Day 1.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Streak Reset Notification -->
+  <div class="modal alert-modal" id="reset-modal">
+    <div class="modal-content text-center">
+      <div class="modal-alert-icon">⚠️</div>
+      <h2>Practice Restarted</h2>
+      <p class="reset-modal-text">You missed completing your journal on a weekday. To keep the focus pure, your 21-day practice has restarted at Day 1.</p>
+      <p class="reset-modal-sub">But don't worry! Your past entries have been safely archived in your <strong>History</strong> view so your reflections are never lost.</p>
+      <button class="primary-btn" id="acknowledge-reset-btn" style="margin: 20px auto 0;">Embrace & Restart</button>
+    </div>
+  </div>
+
+  <!-- Modal: DOB Registration Setup -->
+  <div class="modal" id="dob-modal">
+    <div class="modal-content text-center" style="max-width: 400px;">
+      <div class="modal-alert-icon">🌌</div>
+      <h2>Welcome to Aura</h2>
+      <p class="reset-modal-text" style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+        To align your journey with your cosmic signature, please share your details. This information is stored securely in your browser's local storage.
+      </p>
+      <div class="form-group" style="max-width: 300px; margin: 0 auto 12px; text-align: left;">
+        <label for="user-name-input" style="font-size: 0.85rem; font-weight: 600;">Your Name:</label>
+        <input type="text" id="user-name-input" placeholder="Enter your name" required style="width: 100%; margin-top: 6px; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); color: #fff; outline: none;">
+      </div>
+      <div class="form-group" style="max-width: 300px; margin: 0 auto 12px; text-align: left;">
+        <label for="user-dob-input" style="font-size: 0.85rem; font-weight: 600;">Your Date of Birth:</label>
+        <input type="date" id="user-dob-input" required style="width: 100%; margin-top: 6px; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); color: #fff; outline: none; cursor: pointer;">
+      </div>
+      <div class="form-group" style="max-width: 300px; margin: 0 auto 20px; text-align: left;">
+        <label for="user-email-input" style="font-size: 0.85rem; font-weight: 600;">Your Email:</label>
+        <input type="email" id="user-email-input" placeholder="yourname@example.com" required style="width: 100%; margin-top: 6px; padding: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-sm); color: #fff; outline: none;">
+      </div>
+      <button class="primary-btn" id="save-dob-btn" style="width: 200px; margin-top: 10px;">Begin Journey</button>
+    </div>
+  </div>
+
+  <!-- Modal: Day Completion & Tarot Reveal -->
+  <div class="modal celebration-modal" id="tarot-modal">
+    <div class="modal-content text-center" style="max-width: 480px;">
+      <div class="modal-celebrate-icon" style="margin-bottom: 8px;">✨</div>
+      <h2 id="tarot-celebration-title">Day 1 Complete!</h2>
+      <p class="celebration-subtitle" style="margin-bottom: 12px;">Your gratitude has been logged. Click the card below to reveal your alignment...</p>
+      
+      <!-- Flipping Tarot Card -->
+      <div class="tarot-card-container">
+        <div class="tarot-card-inner" id="tarot-card-inner">
+          <!-- Card Back -->
+          <div class="tarot-card-back">
+            <div class="mystic-pattern">🔮</div>
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 16px; color: #fbbf24;">AURA NUMEROLOGY</div>
+          </div>
+          <!-- Card Front -->
+          <div class="tarot-card-front">
+            <span class="tarot-card-num" id="tarot-card-num">IX</span>
+            <h3 class="tarot-card-title-text" id="tarot-card-title-text">The Hermit</h3>
+            <span class="tarot-card-icon" id="tarot-card-icon">⏳</span>
+            <span class="tarot-card-keywords" id="tarot-card-keywords">Wisdom • Solitude • Reflection</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="tarot-description" id="tarot-card-description">
+        Click on the card to flip and reveal its guidance.
+      </p>
+      
+      <button class="primary-btn" id="close-tarot-modal" style="margin: 20px auto 0; display: none;">Continue Journey</button>
+    </div>
+  </div>
+
+  <!-- Modal: Milestone Celebration -->
+  <div class="modal celebration-modal" id="milestone-modal">
+    <div class="modal-content text-center" style="max-width: 500px; border-color: #fbbf24;">
+      <div class="modal-celebrate-icon" style="color: #fbbf24; font-size: 4.5rem; animation: spinSlow 6s linear infinite; margin-bottom: 12px;">🏆</div>
+      <h2 id="milestone-title">7-Day Streak Achieved!</h2>
+      <p class="celebration-subtitle" id="milestone-subtitle" style="margin-bottom: 20px;">Incredible dedication. You are cultivating a life-changing habit.</p>
+      
+      <div class="milestone-badge-display" style="width: 140px; height: 140px; margin: 0 auto 24px; border: 3px double #fbbf24; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(0, 0, 0, 0) 70%); box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);">
+        <span class="milestone-glow-count" id="milestone-glow-count" style="font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; color: #fbbf24; line-height: 1;">7</span>
+        <span class="milestone-glow-lbl" style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 1px; margin-top: 4px;">Days</span>
+      </div>
+
+      <blockquote class="celebration-quote" style="border-color: #fbbf24; text-align: center; margin-bottom: 20px;">
+        <p id="milestone-quote-text" style="font-size: 1.1rem; font-style: italic; color: #fff;">"Consistency is the true foundation of mindfulness."</p>
+        <cite id="milestone-quote-author" style="font-size: 0.85rem; color: #fbbf24; font-weight: 500;">— Aura Wisdom</cite>
+      </blockquote>
+      
+      <button class="primary-btn" id="close-milestone-btn" style="margin: 24px auto 0; background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); box-shadow: 0 4px 18px rgba(245, 158, 11, 0.4); border: none;">Continue Journey</button>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas Overlay -->
+  <canvas class="confetti-canvas" id="confetti-canvas"></canvas>
+
+  <!-- Main Javascript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
